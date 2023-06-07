@@ -1,24 +1,23 @@
 const jwt = require("jsonwebtoken");
 
-const authenticate = async (req, res, next) => {
+const authenticate = (req, res, next) => {
+  const token = req.headers.authorization;
+
+  if (!token) {
+    return res.status(401).json({ error: "Unauthorized" });
+  }
+
   try {
-    const token = req.headers.authorization;
-
-    if (!token) {
-      return res.status(401).json({ message: "Authentication failure!" });
-    }
-
     // Verify the token
     const decoded = jwt.verify(token, process.env.JWT_SECRET);
-    if (!decoded) {
-      return res.status(401).json({ message: "Authentication failure!" });
-    }
 
-    // Token is valid, store the decoded payload in the request object
+    // Attach the decoded payload to the request object
     req.user = decoded;
+
+    // Call the next middleware function
     next();
   } catch (error) {
-    res.status(401).json({ message: "Authentication failure!" });
+    return res.status(401).json({ error: "Unauthorized" });
   }
 };
 
