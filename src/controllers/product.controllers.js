@@ -17,10 +17,10 @@ const createProduct = async (req, res) => {
       createdAt,
     };
 
-    const book = await createProductToDb(payload);
+    const product = await createProductToDb(payload);
     res.status(201).send({
       message: "Product Created Successfully",
-      data: book,
+      data: product,
     });
   } catch (error) {
     res.status(500).json({ message: "Failed to create the product." });
