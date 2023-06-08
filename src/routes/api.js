@@ -1,6 +1,8 @@
-const { createProduct, getProducts } = require("../controllers/product.controllers");
-
+// external imports
 const express = require("express");
+
+// internal imports
+const { createProduct, getProducts } = require("../controllers/product.controllers");
 const { TokenIssue } = require("../controllers/token.controllers");
 const authenticate = require("../middleware/authenticate");
 const router = express.Router();

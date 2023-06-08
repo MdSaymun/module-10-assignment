@@ -1,4 +1,4 @@
-var jwt = require("jsonwebtoken");
+// internal imports
 const generateToken = require("../utility/generateToken");
 
 const TokenIssue = (req, res) => {

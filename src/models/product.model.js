@@ -1,3 +1,4 @@
+// external imports
 const mongoose = require("mongoose");
 
 // Define the Product schema

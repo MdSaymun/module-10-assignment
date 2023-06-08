@@ -1,3 +1,4 @@
+// internal imports
 const { getProductsFromDb, createProductToDb } = require("../services/product.services");
 
 const createProduct = async (req, res) => {
